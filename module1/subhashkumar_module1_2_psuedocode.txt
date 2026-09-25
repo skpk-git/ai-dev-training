@@ -1,0 +1,43 @@
+WHAT IS PSEUDOCODE?
+
+Pseudocode is a simple, human-readable way of describing the logic of a program without following the exact syntax of a programming language.
+
+It is used to:
+- Plan a program before writing code.
+- Explain an algorithm to other people.
+- Focus on logic rather than programming-language syntax.
+- Make it easier to convert an algorithm into Python, C#, Java, or another language.
+
+
+PSEUDOCODE: READING A FILE
+
+BEGIN
+
+    SET file path
+
+    OPEN the file for reading
+
+    IF the file cannot be opened THEN
+        DISPLAY an error message
+        STOP
+    END IF
+
+    WHILE there is another line in the file
+        READ the next line
+        DISPLAY or PROCESS the line
+    END WHILE
+
+    CLOSE the file
+
+END
+
+
+Example in Python:
+
+file_path = "data.txt"
+
+with open(file_path, "r") as file:
+    for line in file:
+        print(line.strip())
+
+The pseudocode describes the logic without depending on Python syntax.
