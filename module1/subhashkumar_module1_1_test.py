@@ -1,10 +1,11 @@
-# test subhashkumar_module1_1_addnums.py
-# This file contains test cases for the addnum function.
+# test subhashkumar_module1_1_test.py
+
+# This file contains test cases for the subhashkumar_module1_1 addnum function.
 
 import unittest
 
 # Import the functions that we want to test.
-from subhashkumar_module1_1_addnums import add
+from subhashkumar_module1_1 import add
 
 
 class TestAddNums(unittest.TestCase):

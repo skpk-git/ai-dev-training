@@ -1,4 +1,8 @@
-# subhashkumar_module1_1_addnums.py
+# subhashkumar_module1_1.py
+
+# set up GitHub account. -> skpk-git, repository-> ai-dev-training
+# Get/ push example code (test.py). 
+# Set up IDE and push code to repo
 # This file contains a simple add number function, performs one mathematical operation.
 
 """
