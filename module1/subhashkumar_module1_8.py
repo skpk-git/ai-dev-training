@@ -1,4 +1,17 @@
-#make python code to read the text file you made with people address (Q.6). Then return word count for each address. Append the word count into the same file. 
+# test subhashkumar_module1_8.py
+# 
+# make python code to read the text file you made with people address (Q.6). 
+# Then return word count for each address. Append the word count into the same file. 
+
+# import os to clear console
+import os
+
+def clear_console():
+    """Clear the console screen."""
+
+    # Use cls for Windows and clear for Linux/macOS.
+    os.system("cls" if os.name == "nt" else "clear")
+
 
 def count_address_words():
     """Read address.txt, count words in the address, and append the count."""
@@ -24,6 +37,8 @@ def count_address_words():
             print("Address:", address)
             print("Word Count:", word_count)
 
+# Clear the console screen.
+clear_console()
 
 # Call the function.
 count_address_words()

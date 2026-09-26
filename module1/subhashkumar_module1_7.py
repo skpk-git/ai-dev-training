@@ -35,7 +35,7 @@ def accept_string(value):
         pass
         #print("Final block: Do some cleanup here!")
 
-
+# Clear the console screen.
 clear_console()
 
 # Test the function with a string.
