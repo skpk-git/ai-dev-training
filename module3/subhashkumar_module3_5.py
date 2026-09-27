@@ -78,15 +78,16 @@ def create_person(person: Person):
 
 @app.get("/person")
 def get_person():
-    """Return a sample person."""
+    """Return a sample person data."""
 
     return {
-        "name": "Mohamed",
+        "name": "Subhash Kumar",
         "phone_number": "0501234567"
     }
 
-# Start the FastAPI server
+# Start the server
 # python -m uvicorn subhashkumar_module3_5:app --reload
+
 # http://127.0.0.1:8000/docs
 # POST /person
 # GET /person

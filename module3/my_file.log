@@ -1,0 +1,5 @@
+2026-09-27 12:09:13,449 - INFO - Method=GET Path=/docs Status=200 Duration=0.004s
+2026-09-27 12:09:13,752 - INFO - Method=GET Path=/openapi.json Status=200 Duration=0.017s
+2026-09-27 12:09:36,881 - INFO - Method=GET Path=/person Status=200 Duration=0.022s
+2026-09-27 12:10:30,273 - INFO - Method=GET Path=/person Status=200 Duration=0.004s
+2026-09-27 12:11:25,295 - INFO - Method=POST Path=/person Status=200 Duration=0.007s

@@ -2,9 +2,6 @@
 
 # make an api if "Text"missing return 422 with JSON error. Learn about 422      
 
-# Install FastAPI and Uvicorn
-# pip install fastapi uvicorn
-
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -32,7 +29,7 @@ def receive_text(data: TextRequest):
     }
 
 
-# Start the FastAPI server
+# Start the server
 # python -m uvicorn subhashkumar_module3_3:app --reload
 # {
 #     "Text": "Hello Python"

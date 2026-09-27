@@ -1,6 +1,7 @@
 # subhashkumar_module3_4.py
 
-# make python pagaination  /items?page=2&size=5 return page metadata. Why pagination?      
+# make python pagaination  /items?page=2&size=5 return page metadata. 
+# Why pagination?      
 
 from fastapi import FastAPI
 
@@ -50,7 +51,7 @@ def get_items(page: int = 1, size: int = 5):
     # Return items and pagination metadata.
     return {
         "items": page_items,
-        "metadata": {
+        "paging_info": {
             "page": page,
             "size": size,
             "total_items": total_items,
@@ -59,14 +60,35 @@ def get_items(page: int = 1, size: int = 5):
             "has_next": page < total_pages
         }
     }
-# Start the FastAPI server
-# python -m uvicorn subhashkumar_module3_3:app --reload
-# http://127.0.0.1:8000/hello?name=Subhash
-#http://127.0.0.1:8000/items?page=2&size=5
 
-# page = which page you want
-# size = how many records per page
-# total_items = total records available
-# total_pages = number of pages available
-# has_previous = whether a previous page exists
-# has_next = whether a next page exists
+'''
+Why do we need pagination?
+
+Imagine a database contains 1 million items.
+
+Without pagination: 
+    An API request will give you complete data as response
+This can cause:
+    Large response size
+    More network traffic
+    Higher memory usage
+    Slower API response
+    Slower frontend rendering
+    More database processing
+
+With pagination:
+    API request will provide only limited data based on paging parameters
+
+So pagination allows the client to retrieve data in small, manageable pages.
+Pagination parameters:
+    page = which page you want
+    size = how many records per page
+    total_items = total records available
+    total_pages = number of pages available
+    has_previous = whether a previous page exists
+    has_next = whether a next page exists
+'''
+# Start the server
+# python -m uvicorn subhashkumar_module3_6:app --reload
+# http://127.0.0.1:8000/items?page=2&size=5
+

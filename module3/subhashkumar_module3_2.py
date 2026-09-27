@@ -3,9 +3,6 @@
 # make python code using fast API to POST a message 
 # with server time stamp     
 
-# Install FastAPI and Uvicorn
-# pip install fastapi uvicorn
-
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -37,7 +34,7 @@ def create_message(data: Message):
     }
 
 
-# Start the FastAPI server
+# Start the server
 # python -m uvicorn subhashkumar_module3_2:app --reload
 
 # http://127.0.0.1:8000/docs

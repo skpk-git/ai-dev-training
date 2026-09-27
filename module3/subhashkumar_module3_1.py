@@ -3,9 +3,6 @@
 # make python code using fast API to return a message with person name 
 # (/hello?name = Subhash ) - >{"message": "Hello Subhash"   
 
-# Install FastAPI and Uvicorn
-# pip install fastapi uvicorn
-
 
 from fastapi import FastAPI
 
@@ -24,7 +21,9 @@ def say_hello(name: str):
     # Return the message as JSON.
     return {"message": message}
 
+# Install FastAPI and Uvicorn
 # python -m pip install fastapi uvicorn
+# verify installations
 # python -m pip show fastapi
 # python -m pip show uvicorn
 
