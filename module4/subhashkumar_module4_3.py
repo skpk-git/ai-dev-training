@@ -1,7 +1,7 @@
 # subhashkumar_module4_3.py
 
-# make python code to make sql3 db to  create tasks 
-# table : id , title , description , status , created_at provide schema and script      
+# make python POST API to insert information into the table 
+# (add 2 rows ) when called 
 
 import sqlite3
 from datetime import datetime
@@ -69,3 +69,11 @@ def create_tasks():
     return {
         "message": "Two tasks inserted successfully"
     }
+
+
+if __name__ == "__main__":
+    insert_two_tasks()
+    print("Two tasks inserted successfully")
+
+# Start the server
+# python -m uvicorn subhashkumar_module4_3:app --reload

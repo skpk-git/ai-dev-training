@@ -1,6 +1,7 @@
 # subhashkumar_module4_6.py
 
-#add new field name to your exisiting table name  it : missing_field and populate with one random characters 
+# add new field name to your exisiting table name it : missing_field 
+# and populate with one random characters 
 
 import sqlite3
 import random
@@ -49,4 +50,4 @@ for row in cursor.fetchall():
 
 connection.close()
 
-#python view_database.py
+#python subhashkumar_module4_4_view_data.py

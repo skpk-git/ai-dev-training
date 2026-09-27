@@ -1,6 +1,7 @@
 # subhashkumar_module4_8.py
 
-#make python function given search (letters or number) it will return best rows match description. Search only description 
+# make python function given search (letters or number) 
+# it will return best rows match description. Search only description 
 
 import sqlite3
 

@@ -1,46 +1,8 @@
-# subhashkumar_module4_4.py
+# subhashkumar_module4_4_view_data.py
 
-# find method to view sql database tables. 
-# Make python code to view sql databes tables 
+# view data from tasks.db.tasks
 
 import sqlite3
-
-
-# Connect to the database
-connection = sqlite3.connect("tasks.db")
-cursor = connection.cursor()
-
-# Get all tables
-cursor.execute("""
-    SELECT name
-    FROM sqlite_master
-    WHERE type = 'table'
-    ORDER BY name;
-""")
-
-tables = cursor.fetchall()
-
-for table in tables:
-    table_name = table[0]
-
-    print("\n" + "=" * 40)
-    print("TABLE:", table_name)
-    print("=" * 40)
-
-    cursor.execute(f"PRAGMA table_info({table_name})")
-
-    columns = cursor.fetchall()
-
-    print("Columns:")
-    for column in columns:
-        print(
-            f"  {column[1]:<12} | "
-            f"Type: {column[2]:<20} | "
-            f"Primary Key: {column[5]:<20}"
-        )
-print("\n")
-# Close database connection
-connection.close()
 
 # Connect again
 connection = sqlite3.connect("tasks.db")
@@ -76,7 +38,6 @@ if len(rows) > 0:
     for row in string_rows:
         print(format_template.format(*row))
 
- 
 
 # Close database connection
 connection.close()

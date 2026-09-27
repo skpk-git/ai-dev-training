@@ -4,6 +4,7 @@
 
 import sqlite3
 
+# Tasks ordered by missing_field using SQL statement
 connection = sqlite3.connect("tasks.db")
 cursor = connection.cursor()
 
@@ -15,15 +16,15 @@ cursor.execute("""
 
 rows = cursor.fetchall()
 
-print("Tasks ordered by missing_field:")
+print("Tasks ordered by missing_field using SQL statement:")
 
 for row in rows:
     print(row)
 
 connection.close()
 
-import sqlite3
 
+# Tasks ordered by missing_field using python script
 connection = sqlite3.connect("tasks.db")
 cursor = connection.cursor()
 
@@ -37,7 +38,7 @@ rows = cursor.fetchall()
 # Sort rows using missing_field
 sorted_rows = sorted(rows, key=lambda row: row[5])
 
-print("Tasks ordered by missing_field:")
+print("Tasks ordered by missing_field using python script:")
 
 for row in sorted_rows:
     print(row)
