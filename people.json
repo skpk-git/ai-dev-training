@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Ibrahim Javid",
+        "number": "0501234567",
+        "location": "Abu Dhabi",
+        "job_title": "Software Developer"
+    },
+    {
+        "name": "Khalid Alshehi",
+        "number": "0502345678",
+        "location": "Abu Dhabi",
+        "job_title": "Project Manager"
+    },
+    {
+        "name": "Paulson Peter",
+        "number": "0503456789",
+        "location": "Dubai",
+        "job_title": "Data Analyst"
+    },
+    {
+        "name": "Raymond Pareded",
+        "number": "0504567890",
+        "location": "Abu Dhabi",
+        "job_title": "Business Analyst"
+    },
+    {
+        "name": "Renjith Paniker",
+        "number": "0505678901",
+        "location": "Al Ain",
+        "job_title": "System Administrator"
+    }
+]

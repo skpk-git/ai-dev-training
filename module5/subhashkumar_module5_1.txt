@@ -1,0 +1,544 @@
+AI AND LLM BASICS
+
+A beginner-friendly study note for understanding Artificial
+Intelligence, Large Language Models, and LLM application development.
+
+1. WHAT IS AI?
+
+Artificial Intelligence (AI) is the field of building computer systems
+that can perform tasks that normally require human-like intelligence.
+
+Examples include: - Understanding language - Recognizing images - Making
+predictions - Finding patterns in data - Recommending products -
+Planning or making decisions - Generating text, images, audio, or code
+
+AI is a broad field. Machine learning is one approach to AI, and deep
+learning is a type of machine learning. Modern LLMs are deep-learning
+systems.
+
+A simple hierarchy is:
+
+AI | +– Machine Learning | +– Deep Learning | +– Transformer models | +–
+Many modern LLMs
+
+2. WHAT IS AN LLM?
+
+LLM stands for Large Language Model.
+
+An LLM is a machine-learning model trained on large amounts of data so
+that it can process and generate language. Modern generative LLMs
+commonly generate text by predicting the next token based on the tokens
+that came before it.
+
+For example:
+
+Input: “The capital of France is”
+
+The model calculates probabilities for possible next tokens. “Paris” may
+receive a high probability.
+
+The model then generates a token and continues the process.
+
+Important point: An LLM does not work like a normal database containing
+an answer for every question. It has learned statistical patterns and
+representations from its training process and generates an answer from
+those learned patterns and the information available in its current
+context.
+
+3. WHAT IS LLM MODEL SIZE?
+
+“Model size” usually refers to the number of trainable parameters in a
+model.
+
+Examples: - 1 billion parameters = 1B model - 7 billion parameters = 7B
+model - 70 billion parameters = 70B model
+
+A larger parameter count generally means a larger model, but parameter
+count alone does not determine overall quality.
+
+Model size also affects: - Memory required to load the model - Storage
+required for model weights - Compute required for training and
+inference - Potential capability
+
+A smaller model can sometimes perform better than a larger model on a
+particular task, depending on architecture, training data, training
+methods, and task.
+
+4. WHAT IS A TOKEN AND HOW DOES TOKENIZATION WORK?
+
+A token is a piece of text that an LLM processes.
+
+A token may be: - A whole word - Part of a word - Punctuation - A
+number - A special symbol
+
+For example, the sentence:
+
+“I love Python.”
+
+might be split into tokens roughly similar to:
+
+“I” | ” love” | ” Python” | “.”
+
+The exact tokenization depends on the model’s tokenizer.
+
+Tokenization normally works like this:
+
+Text | v Tokenizer | v Token IDs (numbers) | v LLM
+
+The model does not directly process ordinary text characters. The
+tokenizer converts text into token IDs, which are numerical
+representations used by the neural network.
+
+Token counts matter because APIs and models commonly measure input and
+output capacity in tokens, not simply characters or words.
+
+5. WHAT ARE PARAMETERS IN AN LLM?
+
+Parameters are numerical values learned during model training.
+
+They are often called the model’s weights.
+
+During training, the model processes examples and adjusts these values
+so that its predictions improve.
+
+A simplified view is:
+
+Training data | v Model | v Prediction | v Compare with expected result
+| v Adjust parameters | +—-> Repeat many times
+
+If a model has 7 billion parameters, it has approximately 7 billion
+learned numerical values.
+
+HOW DO PARAMETERS RELATE TO MODEL SIZE?
+
+More parameters usually means a larger model.
+
+For example:
+
+7B model -> approximately 7 billion parameters 70B model ->
+approximately 70 billion parameters
+
+The parameter count also influences memory requirements. For example, if
+parameters are stored using 16-bit values, the raw weights require
+approximately:
+
+Number of parameters x 2 bytes
+
+So 7 billion parameters would require roughly 14 GB just for the raw
+weights, before additional memory for runtime operations, caches, and
+other components.
+
+Quantization can reduce the memory required by representing weights with
+fewer bits.
+
+6. WHAT IS FINE-TUNING?
+
+Fine-tuning means taking an already trained model and continuing
+training on a smaller, task-specific dataset.
+
+For example, imagine a general-purpose LLM that understands programming.
+
+You could fine-tune it using examples such as:
+
+Question -> Correct company-specific response
+
+or:
+
+Input -> Desired output
+
+The model’s parameters are adjusted so that it becomes better at the
+patterns represented by the fine-tuning data.
+
+Fine-tuning can be useful for: - Consistent output formats - Specialized
+behavior - Specific writing styles - Classification tasks -
+Domain-specific patterns - Following particular examples more reliably
+
+Fine-tuning is not normally the first solution for giving an LLM access
+to changing company information. For current/private information, RAG or
+tool access may be more appropriate.
+
+7. WHAT IS PROMPT ENGINEERING?
+
+Prompt engineering is the practice of designing the instructions and
+input given to an LLM so that it produces a useful result.
+
+A weak prompt might be:
+
+“Explain SQL.”
+
+A more specific prompt could be:
+
+“Explain SQL to a beginner who knows Python. Give a simple definition,
+three examples, and one SQLite example.”
+
+The second prompt gives the model: - Role/audience - Task - Level of
+detail - Required format - Examples or constraints
+
+Common prompt-engineering techniques include: - Clearly state the task -
+Provide relevant context - Specify the output format - Give examples -
+Define constraints - Ask the model to use supplied information
+
+PROMPT ENGINEERING VS FINE-TUNING
+
+Prompt engineering: - Changes the input/instructions. - Does not
+normally change the model’s learned weights. - Usually quick and
+inexpensive to experiment with. - Good for controlling a model’s
+response for a particular request.
+
+Fine-tuning: - Uses additional training data. - Changes model
+parameters/weights. - Requires a training process and suitable
+dataset. - Can make behavior more consistent for a specialized task.
+
+Simple analogy:
+
+Prompt engineering = give an employee better instructions for each task.
+
+Fine-tuning = give the employee additional training so the behavior
+becomes learned.
+
+8. WHAT ARE EMBEDDINGS AND WHY ARE THEY IMPORTANT?
+
+An embedding is a numerical representation of information, such as text.
+
+A piece of text is converted into a vector of numbers:
+
+“How do I reset my password?” | v [0.12, -0.43, 0.77, …]
+
+Texts with similar meaning tend to have embeddings that are closer
+together in vector space, depending on the embedding model.
+
+Embeddings are important for: - Semantic search - Document retrieval -
+Recommendation systems - Similarity matching - RAG systems - Finding
+related documents
+
+For example, a keyword search may treat:
+
+“How can I change my password?”
+
+and
+
+“I forgot my login password”
+
+as quite different strings.
+
+An embedding-based search can represent their meaning and retrieve
+related information.
+
+A common RAG flow is:
+
+Documents | v Split into chunks | v Create embeddings | v Store vectors
+| User question | v Create question embedding | v Find similar document
+chunks | v Send retrieved context to LLM | v Generate answer
+
+9. WHAT IS THE CONTEXT WINDOW?
+
+The context window is the amount of token-based information a model can
+consider as part of a request and its conversation/context, subject to
+the specific model’s limits.
+
+Context can include: - System instructions - User questions - Previous
+conversation - Retrieved documents - Code - Tool results - Other input
+supplied to the model
+
+A simplified view is:
+
++---------------------------------------+
+|             Context Window            |
+|                                       |
+| Instructions Conversation Source      |
+| documents Code User question          |
++---------------------------------------+
+
+                 |
+                 v
+               LLM
+                 |
+                 v
+              Answer
+
+WHY DOES IT MATTER IN CODING?
+
+When working with code, you may need to provide: - Multiple source
+files - Database schemas - Error messages - Configuration - API
+definitions - Existing implementation - Tests
+
+If the relevant information does not fit into the model’s usable
+context, some information may need to be removed, summarized, retrieved,
+or supplied in smaller pieces.
+
+A larger context window can make it easier to work with large codebases
+or documents, but simply having a larger context window does not
+guarantee better results. Relevant context still needs to be selected
+and organized well.
+
+10. WHAT ARE LLM HALLUCINATIONS?
+
+An LLM hallucination is an answer that contains information that is
+incorrect, unsupported, or invented while being presented as if it were
+a valid answer.
+
+Examples: - Inventing a library function that does not exist - Giving a
+nonexistent citation - Making up a database column - Claiming a
+historical event happened when it did not - Producing incorrect code
+that looks plausible
+
+Why can this happen?
+
+An LLM is designed to generate likely sequences of tokens. It is not
+automatically a truth database or guaranteed fact-checker.
+
+Ways to reduce hallucinations include: - Give reliable source material -
+Use RAG - Use tools and APIs to obtain current information - Ask for
+citations where appropriate - Validate generated code - Test
+calculations and queries - Ask the model to distinguish known
+information from assumptions - Use evaluation and human review for
+important applications
+
+11. LIMITATIONS OF LLMs
+
+Important limitations include:
+
+1.  Incorrect information The model can generate false or outdated
+    information.
+
+2.  Knowledge cutoff or stale information A model may not know events or
+    data after its training period unless external information is
+    supplied.
+
+3.  Hallucinations It can produce plausible but incorrect information.
+
+4.  Context limitations There is a maximum amount of context the model
+    can process.
+
+5.  Reasoning mistakes LLMs can make errors in mathematics, logic, code,
+    or multi-step tasks.
+
+6.  Dependence on input quality Poor or ambiguous instructions can
+    produce poor results.
+
+7.  Security risks LLM applications can be exposed to risks such as
+    prompt injection, data leakage, and unsafe tool use.
+
+8.  Cost and latency Larger models and large contexts can require more
+    computing resources and can increase response time or API cost.
+
+9.  No automatic guarantee of truth A fluent response should not
+    automatically be treated as verified information.
+
+10. HOW CAN AN LLM INTERACT WITH COMPUTERS?
+
+An LLM by itself primarily processes inputs and generates outputs. To
+interact with external systems, an application can connect the model to
+tools.
+
+For example:
+
+User | v LLM | +—-> Calculator tool | +—-> SQL database | +—-> REST API
+| +—-> File system | +—-> Web search | +—-> Business application | v
+Tool result | v LLM | v Final response
+
+A tool can be an ordinary program function.
+
+For example:
+
+def get_customer(customer_id): # Query database return customer_data
+
+The application can make this function available to the LLM through an
+appropriate tool/function-calling interface.
+
+The LLM can decide that a tool is needed, provide the required
+arguments, and the application executes the tool. The result is then
+returned to the LLM.
+
+This is an important pattern for AI agents and AI-assisted software.
+
+13. WHAT IS RAG?
+
+RAG stands for Retrieval-Augmented Generation.
+
+RAG allows an LLM application to retrieve relevant information from an
+external knowledge source and provide that information to the LLM before
+generating an answer.
+
+Typical RAG flow:
+
+1.  Collect documents
+2.  Split documents into chunks
+3.  Create embeddings
+4.  Store the embeddings in a vector store
+5.  User asks a question
+6.  Convert the question into an embedding
+7.  Retrieve relevant chunks
+8.  Put the retrieved chunks into the LLM context
+9.  Generate an answer
+
+Example:
+
+Company PDF documents | v RAG system | User: “What is our warehouse
+process?” | v Relevant company documents | v LLM | v Answer based on
+retrieved information
+
+RAG is particularly useful when information is: - Private - Frequently
+changing - Too large to put into a prompt manually - Stored in company
+documents or databases
+
+RAG does not retrain the LLM. It supplies external information at query
+time.
+
+14. THREE FRAMEWORKS TO START CODING WITH LLMs
+
+There are many tools and frameworks. Three useful choices for learning
+are:
+
+A. HUGGING FACE TRANSFORMERS
+
+Hugging Face Transformers is a major Python library for working directly
+with pretrained transformer models. It supports model loading,
+inference, tokenization, and training/fine-tuning workflows.
+
+It is useful when you want to understand: - Models - Tokenizers - Local
+LLMs - Inference - Fine-tuning - Model configuration
+
+Example:
+
+from transformers import pipeline
+
+pipe = pipeline(“text-generation”, model=“…”) result = pipe(“Explain SQL
+simply.”)
+
+Transformers is a good foundation for understanding what is happening
+closer to the model level.
+
+B. LANGCHAIN
+
+LangChain is an application-development framework for composing LLMs
+with prompts, tools, integrations, agents, retrievers, and other
+components.
+
+It is useful when building: - Chatbots - Tool-using applications -
+Agents - RAG applications - Multi-step LLM workflows
+
+The current LangChain ecosystem also includes LangGraph for stateful,
+long-running agent workflows and LangSmith for debugging, testing, and
+monitoring.
+
+C. LLAMAINDEX
+
+LlamaIndex focuses strongly on connecting LLMs with external data.
+
+It is particularly useful for: - RAG - Document processing - Data
+indexing - Retrieval - Question answering over documents - Agents that
+work with data
+
+For example, you can load company documents, create an index, retrieve
+relevant information, and provide that information to an LLM.
+
+HOW TO CHOOSE
+
+If your goal is to understand the model itself: Start with Hugging Face
+Transformers.
+
+If your goal is to build general LLM applications and agents: Learn
+LangChain.
+
+If your goal is mainly RAG and working with documents/company data:
+Learn LlamaIndex.
+
+These tools can also be used together. They are not mutually exclusive.
+
+15. SIMPLE LLM LEARNING PATH
+
+A practical learning sequence is:
+
+Step 1: Understand Python.
+
+Step 2: Understand AI, machine learning, deep learning, and neural
+networks.
+
+Step 3: Learn: - Tokens - Tokenization - Embeddings - Parameters - Model
+size - Context windows
+
+Step 4: Use an existing LLM through an API.
+
+Step 5: Learn prompt engineering.
+
+Step 6: Build a simple chatbot.
+
+Step 7: Learn embeddings and vector search.
+
+Step 8: Build a small RAG application using your own documents.
+
+Step 9: Learn tool/function calling so the LLM can interact with APIs,
+databases, and programs.
+
+Step 10: Learn agents and workflows.
+
+Step 11: Learn fine-tuning when you have a clear reason and suitable
+training data.
+
+16. KEY DIFFERENCES AT A GLANCE
+
+AI: The broad field of making computers perform intelligent tasks.
+
+LLM: A large language model that processes and generates language.
+
+Token: A piece of text represented as a token ID for the model.
+
+Parameter: A learned numerical value inside the model.
+
+Model size: Often expressed by the number of parameters, such as 7B or
+70B.
+
+Prompt engineering: Improving instructions/input to control the model’s
+response.
+
+Fine-tuning: Additional training that changes model parameters.
+
+Embedding: A numerical vector representation used to capture useful
+relationships or semantic similarity.
+
+Context window: The token-based context available to the model for a
+request.
+
+Hallucination: Incorrect or unsupported content generated by an LLM.
+
+RAG: Retrieving external information and giving it to the LLM as
+context.
+
+Tool calling: Connecting the LLM application to external functions,
+APIs, databases, or other tools.
+
+17. ONE BIG PICTURE
+
+                    AI
+                     |
+          +----------+----------+
+          |                     |
+     Machine Learning      Other AI methods
+          |
+     Deep Learning
+          |
+     Transformer Models
+          |
+         LLM
+          |
+    +-----+-----+----------------+
+    |           |                |
+
+Prompt RAG Tool Calling Engineering | | | Embeddings APIs | Documents
+SQL | Vector DB Files | | +————+————-+ | LLM Application | v User
+
+SUMMARY
+
+The most important idea is that an LLM is a trained model that works
+with tokens and learned parameters. Prompt engineering controls how we
+ask the model to perform a task. Embeddings help applications search and
+compare information by meaning. RAG supplies relevant external
+information without retraining the model. Tool calling allows an LLM
+application to interact with databases, APIs, files, and other computer
+systems. Fine-tuning changes the model through additional training when
+specialized behavior is required.
+
+For a beginner learning to build LLM applications in Python, a useful
+progression is: Python -> LLM API -> Prompt Engineering -> Embeddings ->
+RAG -> Tool Calling -> Agents -> Fine-tuning.
