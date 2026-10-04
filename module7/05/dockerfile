@@ -1,0 +1,7 @@
+FROM python:3.10-slim
+
+WORKDIR /05
+
+COPY subhashkumar_module7_5.py .
+
+CMD ["python", "subhashkumar_module7_5.py"]

@@ -1,0 +1,7 @@
+FROM python:3.10
+
+WORKDIR /04
+
+COPY subhashkumar_module7_4.py .
+
+CMD ["python", "subhashkumar_module7_4.py"]

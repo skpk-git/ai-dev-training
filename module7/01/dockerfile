@@ -1,0 +1,16 @@
+# subhashkumar_module7_1.py
+
+# Use Python as the base image
+FROM python:3.10
+
+# Create application directory
+WORKDIR /module7
+
+# Copy Python program into the container
+COPY subhashkumar_module7_1.py .
+
+# Run the Python program
+CMD ["python", "subhashkumar_module7_1.py"]
+
+#E:\gal-learning\work\ai-dev-training
+#docker build -t input-app .

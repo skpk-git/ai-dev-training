@@ -1,0 +1,15 @@
+services:
+
+  ollama-chat:
+    build: .
+
+    container_name: ollama_chat_app
+
+    ports:
+      - "8501:8501"
+
+    environment:
+      PERSONA_ENABLED: ${PERSONA_ENABLED:-false}
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

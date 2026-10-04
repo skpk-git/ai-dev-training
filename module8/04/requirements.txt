@@ -1,0 +1,7 @@
+mcp[cli]
+fastapi
+uvicorn
+streamlit
+langchain
+langchain-ollama
+pydantic

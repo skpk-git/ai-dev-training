@@ -1,0 +1,11 @@
+services:
+
+  user-generator:
+    build: .
+    container_name: random_user_generator
+
+    stdin_open: true
+    tty: true
+
+    volumes:
+      - ./data:/app/data
